@@ -1,4 +1,5 @@
 import os
+import platform
 import time
 import random
 import requests
@@ -23,9 +24,15 @@ url = "https://example.com.br/"
 
 # Função para trocar de IP
 def trocar_ip(pais):
-    os.chdir(r"C:\Program Files\NordVPN")
-    os.system("nordvpn d")
-    os.system(f"nordvpn -c -g {pais}")
+    sistema_operacional = platform.system()
+
+    if sistema_operacional == "Windows":
+        os.chdir(r"C:\Program Files\NordVPN")
+        os.system("nordvpn -d")
+        os.system(f"nordvpn -c -g {pais}")
+    elif sistema_operacional == "Linux":
+        os.system("nordvpn disconnect")
+        os.system(f"nordvpn connect {pais}")
 
 # Faz um loop infinito
 while True:
