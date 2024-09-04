@@ -20,7 +20,7 @@ paises = ["United States", "Canada", "Argentina", "Mexico", "Costa Rica", "Chile
 tempo_espera = 60
 
 # URL do site a ser verificado
-url = "https://threewordphrase.com/"
+url = "https://example.com.br/"
 
 # Função para trocar de IP
 def trocar_ip(pais):
