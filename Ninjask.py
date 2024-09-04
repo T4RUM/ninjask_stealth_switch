@@ -1,4 +1,5 @@
 import os
+import platform
 import time
 import random
 import requests
@@ -19,13 +20,19 @@ paises = ["United States", "Canada", "Argentina", "Mexico", "Costa Rica", "Chile
 tempo_espera = 60
 
 # URL do site a ser verificado
-url = "https://example.com.br/"
+url = "https://threewordphrase.com/"
 
 # Função para trocar de IP
 def trocar_ip(pais):
-    os.chdir(r"C:\Program Files\NordVPN")
-    os.system("nordvpn d")
-    os.system(f"nordvpn -c -g {pais}")
+    sistema_operacional = platform.system()
+
+    if sistema_operacional == "Windows":
+        os.chdir(r"C:\Program Files\NordVPN")
+        os.system("nordvpn -d")
+        os.system(f"nordvpn -c -g {pais}")
+    elif sistema_operacional == "Linux":
+        os.system("nordvpn disconnect")
+        os.system(f"nordvpn connect {pais}")
 
 # Faz um loop infinito
 while True:
